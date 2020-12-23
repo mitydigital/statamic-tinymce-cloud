@@ -1,0 +1,42 @@
+{
+    "name": "mitydigital/statamic-tinymce-cloud",
+    "description": "A Statamic 3 fieldtype for TinyMCE using Tiny Cloud",
+    "version": "1.0.0",
+    "type": "statamic-addon",
+    "keywords": [
+        "statamic",
+        "tinymce",
+        "tinymce cloud",
+        "tiny cloud"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MityDigital\\StatamicTinymceCloud\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marty Friedel"
+        }
+    ],
+    "support": {
+        "email": "dev@mity.com.au"
+    },
+    "require": {
+        "php": "^7.3",
+        "illuminate/support": "^8.0",
+        "statamic/cms": "^3.0"
+    },
+    "extra": {
+        "statamic": {
+            "name": "TinyMCE Cloud",
+            "description": "A Statamic 3 fieldtype for TinyMCE using Tiny Cloud"
+        },
+        "laravel": {
+            "providers": [
+                "MityDigital\\StatamicTinymceCloud\\ServiceProvider"
+            ]
+        }
+    }
+}
