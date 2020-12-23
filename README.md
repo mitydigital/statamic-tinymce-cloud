@@ -7,7 +7,7 @@ This is a TinyMCE 5 Fieldtype for Statamic 3 utilising the cloud-hosted version 
 This requires a free API key from [tiny.cloud](https://www.tiny.cloud), and simplifies your build steps as the cloud
 version will always run the latest version from Tiny, and doesn't need to be included in your app's bundle.
 
-[TinyMCE as a fieldtype in Statamic 3](https://github.com/mitydigital/statamic-tinymce-cloud/blob/master/docs/tinymce-in-statamic.png?raw=true)
+![TinyMCE as a fieldtype in Statamic 3](https://github.com/mitydigital/statamic-tinymce-cloud/blob/master/docs/tinymce-in-statamic.png?raw=true)
 
 ## What can it do?
 
@@ -66,7 +66,7 @@ configuration. When you add the fieldtype to a Blueprint or Fieldset, this confi
 and you can then adjust on a field usage basis. In other words, one Blueprint could have a fully-featured editor, while
 another Blueprint could have a slimmed down feature set.
 
-[TinyMCE default configuration in Statamic 3](https://github.com/mitydigital/statamic-tinymce-cloud/blob/master/docs/tinymce-cloud-configuration.png?raw=true)
+![TinyMCE default configuration in Statamic 3](https://github.com/mitydigital/statamic-tinymce-cloud/blob/master/docs/tinymce-cloud-configuration.png?raw=true)
 
 Refer to [TinyMCE's documentation](https://www.tiny.cloud/docs/) for full configuration options.
 
