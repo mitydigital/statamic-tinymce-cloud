@@ -88,14 +88,14 @@ TinyMCE configuration using the `external_plugins` configuration option.
 Using external plugins is identical to when you use a self-hosted version of TinyMCE. Take care to ensure your plugin
 definition URLs are publicly accessible, and either relative to the site's root or absolute.
 
-```json
+```javascript
 {
-    ...
+    // ...
     "external_plugins": {
         "my_plugin_name": "/plugins/my_plugin_name/plugin.min.js"
     },
     "toolbar": "... my_plugin_name ...",
-    ...
+    // ...
 }
 ```
 
