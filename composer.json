@@ -1,7 +1,6 @@
 {
     "name": "mitydigital/statamic-tinymce-cloud",
     "description": "A Statamic 3 fieldtype for TinyMCE using Tiny Cloud",
-    "version": "1.0.0",
     "type": "statamic-addon",
     "keywords": [
         "statamic",
