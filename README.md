@@ -66,6 +66,13 @@ configuration. When you add the fieldtype to a Blueprint or Fieldset, this confi
 and you can then adjust on a field usage basis. In other words, one Blueprint could have a fully-featured editor, while
 another Blueprint could have a slimmed down feature set.
 
+**Important Note**: outside of Statamic, your TinyMCE Configuration Object is just a JavaScript object. However, to take
+advantage of JSON validation within Statamic, you need to ensure your configuration is valid JSON - the most common
+point is to ensure double quotes are used (instead of single quotes). Currently the JSON validation is only on the
+defaults due to Statamic validation processes for fieldtypes, however validating here against JSON can help prevent
+mistakes in your configuration. Run your configuration through a JSON validator (such
+as [JSON Lint](https://jsonlint.com/)) to check your syntax.
+
 ![TinyMCE default configuration in Statamic 3](https://github.com/mitydigital/statamic-tinymce-cloud/blob/master/docs/tinymce-cloud-configuration.png?raw=true)
 
 Refer to [TinyMCE's documentation](https://www.tiny.cloud/docs/) for full configuration options.
@@ -91,10 +98,17 @@ definition URLs are publicly accessible, and either relative to the site's root 
 ```javascript
 {
     // ...
-    "external_plugins": {
-        "my_plugin_name": "/plugins/my_plugin_name/plugin.min.js"
-    },
-    "toolbar": "... my_plugin_name ...",
+    "external_plugins"
+:
+    {
+        "my_plugin_name"
+    :
+        "/plugins/my_plugin_name/plugin.min.js"
+    }
+,
+    "toolbar"
+:
+    "... my_plugin_name ...",
     // ...
 }
 ```

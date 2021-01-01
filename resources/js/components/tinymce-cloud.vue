@@ -20,11 +20,6 @@ export default {
         init() {
             return this.meta.init;
         }
-    },
-    methods: {
-        removeHttps() {
-            console.log('we are updating');
-        }
     }
 };
 </script>
