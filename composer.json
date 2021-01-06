@@ -23,8 +23,6 @@
         "email": "dev@mity.com.au"
     },
     "require": {
-        "php": "^7.3",
-        "illuminate/support": "^8.0",
         "statamic/cms": "^3.0"
     },
     "extra": {
