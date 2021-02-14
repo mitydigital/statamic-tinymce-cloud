@@ -98,17 +98,11 @@ definition URLs are publicly accessible, and either relative to the site's root 
 ```javascript
 {
     // ...
-    "external_plugins"
-:
+    "external_plugins":
     {
-        "my_plugin_name"
-    :
-        "/plugins/my_plugin_name/plugin.min.js"
-    }
-,
-    "toolbar"
-:
-    "... my_plugin_name ...",
+        "my_plugin_name": "/plugins/my_plugin_name/plugin.min.js"
+    },
+    "toolbar": "... my_plugin_name ...",
     // ...
 }
 ```
