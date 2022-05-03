@@ -155,7 +155,11 @@ fieldtype instances.
 
 You can create as many Configurations as you need - one, two, four, whatever you like. You'll need at least one though.
 
-Give each Configuration a Name and a TinyMCE Configuration Object
+Give each Configuration a Name and a TinyMCE Configuration Object.
+
+Whatever your **first** configuration set is will be the default for any new TinyMCE Cloud fieldtypes. All options in 
+the fieldtype configuration will be sorted alphabetically for ease-of-reading, and having a default just makes life 
+easier.
 
 **Important Note**: outside of Statamic, your TinyMCE Configuration Object is just a JavaScript object. However, to take
 advantage of JSON validation within Statamic, you need to ensure your configuration is valid JSON - this means you must
