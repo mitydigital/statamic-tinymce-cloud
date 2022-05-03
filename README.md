@@ -221,6 +221,9 @@ help you. So be awesome - it'll feel fantastic.
 
 - [Marty Friedel](https://github.com/martyf)
 
+Makes use of:
+- [TinyMCE Vue component](https://github.com/tinymce/tinymce-vue)
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
