@@ -66,13 +66,23 @@ Publish the configuration file. This will create `tinymce-cloud.php` in your con
 php artisan vendor:publish --tag="statamic-tinymce-cloud-config"
 ```
 
+Add `TINYMCE_CLOUD_APIKEY` to your .env file, and set your API key from [tiny.cloud](https://www.tiny.cloud).
+
+```
+TINYMCE_CLOUD_APIKEY="YOUR_API_KEY"
+```
+
+This will get passed on to the TinyMCE fieldtype instance automatically - you don't need to include this in each of 
+your TinyMCE configurations.
+
 ### Upgrading from v1.x
 
 v2.x is a major upgrade from v1.x.
 
 #### What's changed:
 
-- Configuration setup and use is completely rewritten
+- Configuration setup and use is completely 
+- Support for the "Cloud Channel" editor config option
 - Permission has been added
 - Support for Statamic 3.3+ only
 
@@ -127,14 +137,6 @@ Phew, done all that? You're now good to go.
 
 ## Configuration
 
-Add `TINYMCE_CLOUD_APIKEY` to your .env file, and set your API key from [tiny.cloud](https://www.tiny.cloud).
-
-```
-TINYMCE_CLOUD_APIKEY="YOUR_API_KEY"
-```
-
-This will get passed on to the TinyMCE instance automatically - you don't need to include this in each of your TinyMCE
-configurations.
 
 Within Statamic, under Tools, you will see **TinyMCE Cloud**. This is where you can configure your TinyMCE Cloud
 fieldtypes.
