@@ -16,8 +16,8 @@ This is a TinyMCE Fieldtype for Statamic 3 utilising the cloud-hosted version of
 This requires a free API key from [tiny.cloud](https://www.tiny.cloud), and simplifies your build steps as the cloud
 version will always run the latest version from Tiny, and doesn't need to be included in your app's bundle.
 
-In the configuration you are able to choose which TinyMCE version you want to use - now including TinyMCE 6 as well as
-TinyMCE 5.
+In the configuration you are able to choose which TinyMCE version you want to use - you now have the choice of 
+TinyMCE 6 or TinyMCE 5.
 
 ![TinyMCE 6 as a fieldtype in Statamic 3](./docs/tinymce-in-statamic.png)
 
@@ -48,6 +48,8 @@ hosted with your project.
 To use the Tiny Cloud version of TinyMCE, you need a [free API key from Tiny](https://www.tiny.cloud). When you have
 your key set up, you can also take advantage of Tiny's Premium plugins if needed.
 
+---
+
 ## Installation
 
 This Addon is for **Statamic 3.3+**.
@@ -68,7 +70,7 @@ php artisan vendor:publish --tag="statamic-tinymce-cloud-config"
 
 v2.x is a major upgrade from v1.x.
 
-What's changed:
+#### What's changed:
 
 - Configuration setup and use is completely rewritten
 - Permission has been added
@@ -108,9 +110,20 @@ Here you'll use the configurations you manually made note of from step 1. Aren't
 #### 4. Update your TinyMCE Cloud fieldtype instances
 
 Edit each Blueprint where you're using a TinyMCE Cloud fieldtype, and edit its configuration. From your list of
-Configuration Options, select the configuration you want to use for that instance.
+Configuration Options, select the configuration you want to use for that instance, and Save.
+
+*Optional:* If you like to keep things clean, you may want to manually edit each Blueprint yaml file and remove
+the `init` property from the v1.x version of the addon. It's no longer used in v2.x, and won't cause harm if it is left
+there, but for cleanliness, you may want to remove it.
+
+#### 5. Optional: Update Roles
+
+If you want to restrict access to the TinyMCE Cloud configuration view, you can update your roles to add/remove the 
+"View TinyMCE Cloud configuration" permission.
 
 Phew, done all that? You're now good to go.
+
+---
 
 ## Configuration
 
@@ -173,12 +186,10 @@ definition URLs are publicly accessible, and either relative to the site's root 
 
 ```json
 {
-  // ...
   "external_plugins": {
     "my_plugin_name": "/plugins/my_plugin_name/plugin.min.js"
   },
   "toolbar": "... my_plugin_name ..."
-  // ...
 }
 ```
 
@@ -191,6 +202,8 @@ A permission has been created with this addon to help you restrict who can updat
 
 When editing a Role within Statamic, under "Miscellaneous" you will see the permission "View TinyMCE Cloud
 configuration". Assign this permission to users to grant them access to the Configuration view.
+
+---
 
 ## Support
 
