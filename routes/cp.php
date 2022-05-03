@@ -1,4 +1,11 @@
 <?php
 
-Route::get('tinymce-cloud', 'TinymceCloudDefaultsController@edit')->name('statamic-tinymce-cloud.defaults.edit');
-Route::post('tinymce-cloud', 'TinymceCloudDefaultsController@update')->name('statamic-tinymce-cloud.defaults.update');
+use MityDigital\StatamicTinymceCloud\Http\Controllers\TinymceCloudDefaultsController;
+
+Route::get('tinymce-cloud',
+    [TinymceCloudDefaultsController::class, 'edit'])->name('statamic-tinymce-cloud.defaults.edit')
+    ->can('view tinymce cloud configuration');
+
+Route::post('tinymce-cloud',
+    [TinymceCloudDefaultsController::class, 'update'])->name('statamic-tinymce-cloud.defaults.update')
+    ->can('view tinymce cloud configuration');

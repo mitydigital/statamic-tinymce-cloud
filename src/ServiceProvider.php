@@ -4,6 +4,7 @@ namespace MityDigital\StatamicTinymceCloud;
 
 use MityDigital\StatamicTinymceCloud\Fieldtypes\TinymceCloud;
 use Statamic\Facades\CP\Nav;
+use Statamic\Facades\Permission;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -37,11 +38,15 @@ class ServiceProvider extends AddonServiceProvider
 
         // update nav
         Nav::extend(function ($nav) {
-            $nav->tools('TinyMCE Cloud')
+            $nav->tools(__('statamic-tinymce-cloud::addon.name'))
                 ->route('statamic-tinymce-cloud.defaults.edit')
                 ->icon('textarea')
-                ->active('tinymce-cloud');
+                ->can('view tinymce cloud configuration');
         });
+
+        // register permission
+        Permission::register('view tinymce cloud configuration')
+            ->label(__('statamic-tinymce-cloud::permissions.configuration'));
 
         // Register the TinymceCloud Custom Field
         TinymceCloud::register();

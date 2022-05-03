@@ -23,7 +23,7 @@
         "email": "dev@mity.com.au"
     },
     "require": {
-        "statamic/cms": "^3.0"
+        "statamic/cms": "^3.3"
     },
     "extra": {
         "statamic": {
@@ -34,6 +34,11 @@
             "providers": [
                 "MityDigital\\StatamicTinymceCloud\\ServiceProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
         }
     }
 }

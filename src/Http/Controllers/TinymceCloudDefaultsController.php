@@ -9,6 +9,8 @@ use Statamic\Support\Arr;
 
 class TinymceCloudDefaultsController extends CpController
 {
+
+
     /**
      * Load the edit view for defining the TinyMCE default options.
      *

@@ -9,43 +9,69 @@ class TinymceCloud extends Fieldtype
 {
     protected $icon = 'textarea';
 
-    protected $categories = ['text', 'media'];
-
-    public function __construct()
-    {
-        // prepare defaults
-        $defaults = ConfigurationDefaults::load();
-
-        // build the config fields
-        $this->configFields = [
-            'init' => [
-                'display'      => __('statamic-tinymce-cloud::field.init'),
-                'instructions' => __('statamic-tinymce-cloud::field.init_instruct'),
-                'type'         => 'code',
-                'mode'         => 'javascript',
-                'default'      => $defaults->get('default_init')
-            ],
-        ];
-    }
+    protected $categories = ['text', 'special'];
 
     /**
      * @return string
      */
-    public static function title()
+    public static function title(): string
     {
-        return 'TinyMCE Cloud';
+        return __('statamic-tinymce-cloud::addon.name');
     }
 
     /**
      * @return array
      */
-    public function preload()
+    public function preload(): array
     {
+        // prepare defaults
+        $defaults = ConfigurationDefaults::load();
+
+        // get the selected config
+        $config = collect($defaults->get('defaults'))->firstWhere('name', $this->config('config'));
+
+        if (!$config) {
+            $config = '{}';
+        }
+
+        // decode the config
+        $config = json_decode($config['configuration'], true);
+
         return [
-            'init' => json_decode($this->config('init'), true),
-            'key'  => config('statamic.tinymce-cloud.api_key', '')
+            'init'          => $config,
+            'key'           => config('statamic.tinymce-cloud.api_key', ''),
+            'cloud_channel' => $defaults->get('cloud_channel', 6)
         ];
     }
 
+    protected function configFieldItems(): array
+    {
+        // prepare defaults
+        $defaults = ConfigurationDefaults::load();
 
+        // get the cofnigs
+        $configs = collect($defaults->get('defaults', []));
+
+        // get the default
+        $default = null;
+        if ($configs->count()) {
+            $default = $configs->first()['name'];
+        }
+
+        return [
+            'config' => [
+                'display'  => __('statamic-tinymce-cloud::fieldtype.config'),
+                'type'     => 'select',
+                'default'  => $default,
+                'options'  => $configs
+                    ->mapWithKeys(fn(array $config) => [
+                        $config['name'] => $config['name']
+                    ])
+                    ->sort()
+                    ->toArray(),
+                'width'    => 33,
+                'validate' => ['required']
+            ],
+        ];
+    }
 }

@@ -3,6 +3,8 @@
 namespace MityDigital\StatamicTinymceCloud;
 
 use Illuminate\Support\Collection;
+use MityDigital\StatamicTinymceCloud\Rules\ConfigIsValidRule;
+use MityDigital\StatamicTinymceCloud\Rules\ConfigNameUniqueRule;
 use Statamic\Facades\Blueprint;
 use Statamic\Facades\File;
 use Statamic\Facades\YAML;
@@ -77,14 +79,60 @@ class ConfigurationDefaults extends Collection
                 'main' => [
                     'fields' => [
                         [
-                            'handle' => 'default_init',
+                            'handle' => 'cloud_channel',
+                            'field'  => [
+                                'display'      => __('statamic-tinymce-cloud::defaults.cloud_channel'),
+                                'instructions' => __('statamic-tinymce-cloud::defaults.cloud_channel_instruct'),
+                                'type'         => 'select',
+                                'default'      => '6',
+
+                                'options' => [
+                                    '5' => 'TinyMCE 5',
+                                    '6' => 'TinyMCE 6'
+                                ],
+
+                                'validate' => ['required']
+                            ],
+                        ],
+                        [
+                            'handle' => 'defaults',
                             'field'  => [
                                 'display'      => __('statamic-tinymce-cloud::defaults.init'),
                                 'instructions' => __('statamic-tinymce-cloud::defaults.init_instruct'),
-                                'type'         => 'code',
-                                'mode'         => 'javascript',
+                                'type'         => 'replicator',
+                                'sets'         => [
+                                    'configuration' => [
+                                        'display' => __('statamic-tinymce-cloud::defaults.config_defaults'),
+                                        'fields'  => [
+                                            [
+                                                'handle' => 'name',
+                                                'field'  => [
+                                                    'display'      => __('statamic-tinymce-cloud::defaults.config_name'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_name_instruct'),
+                                                    'type'         => 'text',
+                                                    'validate'     => ['required']
+                                                ],
+                                            ],
+                                            [
+                                                'handle' => 'configuration',
+                                                'field'  => [
+                                                    'type' => 'code',
+                                                    'mode' => 'javascript',
 
-                                'validate' => ['required', 'json']
+                                                    'display'               => __('statamic-tinymce-cloud::defaults.config_code'),
+                                                    'instructions'          => __('statamic-tinymce-cloud::defaults.config_code_instruct'),
+                                                    'instructions_position' => 'below',
+
+                                                    'validate' => [
+                                                        'required',
+                                                        new ConfigIsValidRule()
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'validate'     => ['required', new ConfigNameUniqueRule()]
                             ],
                         ]
                     ],

@@ -11,4 +11,4 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/tinymce-cloud.js', 'resources/dist/js/tinymce-cloud.js');
+mix.js('resources/js/tinymce-cloud.js', 'resources/dist/js/tinymce-cloud.js').vue({version: 2});
