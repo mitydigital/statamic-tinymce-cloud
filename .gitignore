@@ -1,3 +1,11 @@
-/node_modules/
+vendor
+.DS_Store
+.phpunit.result.cache
+node_modules
+package-lock.json
+.php_cs.cache
 .idea
-.DS_STORE
+.antlers.json
+mix-manifest.json
+composer.lock
+.php-cs-fixer.cache
