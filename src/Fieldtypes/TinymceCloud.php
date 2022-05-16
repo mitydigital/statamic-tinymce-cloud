@@ -16,7 +16,7 @@ class TinymceCloud extends Fieldtype
      */
     public static function title(): string
     {
-        return __('tinymce-cloud::addon.name');
+        return __('statamic-tinymce-cloud::addon.name');
     }
 
     /**
@@ -60,7 +60,7 @@ class TinymceCloud extends Fieldtype
 
         return [
             'config' => [
-                'display'  => __('tinymce-cloud::fieldtype.config'),
+                'display'  => __('statamic-tinymce-cloud::fieldtype.config'),
                 'type'     => 'select',
                 'default'  => $default,
                 'options'  => $configs

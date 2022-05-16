@@ -25,9 +25,9 @@ class TinymceCloudDefaultsController extends CpController
             ->addValues(ConfigurationDefaults::load()->all())
             ->preProcess();
 
-        return view('tinymce-cloud::defaults', [
-            'title'     => __('tinymce-cloud::defaults.title'),
-            'action'    => cp_route('tinymce-cloud.defaults.update'),
+        return view('statamic-tinymce-cloud::defaults', [
+            'title'     => __('statamic-tinymce-cloud::defaults.title'),
+            'action'    => cp_route('statamic-tinymce-cloud.defaults.update'),
             'blueprint' => $blueprint->toPublishArray(),
             'meta'      => $fields->meta(),
             'values'    => $fields->values(),

@@ -29,22 +29,22 @@ class ServiceProvider extends AddonServiceProvider
     public function bootAddon()
     {
         // views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tinymce-cloud');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'statamic-tinymce-cloud');
 
         // translations
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'tinymce-cloud');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-tinymce-cloud');
 
         // update nav
         Nav::extend(function ($nav) {
-            $nav->tools(__('tinymce-cloud::addon.name'))
-                ->route('tinymce-cloud.defaults.edit')
+            $nav->tools(__('statamic-tinymce-cloud::addon.name'))
+                ->route('statamic-tinymce-cloud.defaults.edit')
                 ->icon('textarea')
                 ->can('view tinymce cloud configuration');
         });
 
         // register permission
         Permission::register('view tinymce cloud configuration')
-            ->label(__('tinymce-cloud::permissions.configuration'));
+            ->label(__('statamic-tinymce-cloud::permissions.configuration'));
 
         // Register the TinymceCloud Custom Field
         TinymceCloud::register();
