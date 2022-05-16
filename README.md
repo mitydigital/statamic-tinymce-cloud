@@ -63,7 +63,7 @@ composer require mitydigital/statamic-tinymce-cloud
 Publish the configuration file. This will create `tinymce-cloud.php` in your config/statamic folder.
 
 ```
-php artisan vendor:publish --tag="tinymce-cloud-config"
+php artisan vendor:publish --tag="statamic-tinymce-cloud-config"
 ```
 
 Add `TINYMCE_CLOUD_APIKEY` to your .env file, and set your API key from [tiny.cloud](https://www.tiny.cloud).
@@ -74,6 +74,11 @@ TINYMCE_CLOUD_APIKEY="YOUR_API_KEY"
 
 This will get passed on to the TinyMCE fieldtype instance automatically - you don't need to include this in each of 
 your TinyMCE configurations.
+
+### Upgrading from v2.0.0 to v2.0.1
+
+The config file has a new home in `config/statamic-tinymce-cloud.php`. The upgrade process will try to move your v2.0.0 
+config file to the new location. Check the console after the upgrade for any notices.
 
 ### Upgrading from v1.x
 
@@ -136,7 +141,6 @@ Phew, done all that? You're now good to go.
 ---
 
 ## Configuration
-
 
 Within Statamic, under Tools, you will see **TinyMCE Cloud**. This is where you can configure your TinyMCE Cloud
 fieldtypes.
@@ -210,6 +214,16 @@ When editing a Role within Statamic, under "Miscellaneous" you will see the perm
 configuration". Assign this permission to users to grant them access to the Configuration view.
 
 ---
+
+## Translations
+
+You can publish the language files if you need to make changes to the language strings.
+
+```
+php artisan vendor:publish --tag="statamic-tinymce-cloud-translations"
+```
+
+Have a language you want to add? Submit a [pull request](../../pulls).
 
 ## Support
 
