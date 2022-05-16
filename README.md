@@ -60,7 +60,8 @@ Install it via the composer command
 composer require mitydigital/statamic-tinymce-cloud
 ```
 
-Publish the configuration file. This will create `tinymce-cloud.php` in your config/statamic folder.
+Publish the configuration file (only if you need to make changes). This will create `statamic-tinymce-cloud.php` in 
+your config folder.
 
 ```
 php artisan vendor:publish --tag="statamic-tinymce-cloud-config"
