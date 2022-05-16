@@ -33,6 +33,6 @@ class ConfigNameUniqueRule implements Rule
      */
     public function message(): string
     {
-        return __('statamic-tinymce-cloud::rules.config_name_unique');
+        return __('tinymce-cloud::rules.config_name_unique');
     }
 }

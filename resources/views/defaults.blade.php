@@ -11,7 +11,7 @@
     ></publish-form>
 
     @include('statamic::partials.docs-callout', [
-        'topic' => __('statamic-tinymce-cloud::defaults.tinymce'),
+        'topic' => __('tinymce-cloud::defaults.tinymce'),
         'url' => 'https://www.tiny.cloud'
     ])
 @stop

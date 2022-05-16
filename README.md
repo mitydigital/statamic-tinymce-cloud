@@ -63,7 +63,7 @@ composer require mitydigital/statamic-tinymce-cloud
 Publish the configuration file. This will create `tinymce-cloud.php` in your config/statamic folder.
 
 ```
-php artisan vendor:publish --tag="statamic-tinymce-cloud-config"
+php artisan vendor:publish --tag="tinymce-cloud-config"
 ```
 
 Add `TINYMCE_CLOUD_APIKEY` to your .env file, and set your API key from [tiny.cloud](https://www.tiny.cloud).

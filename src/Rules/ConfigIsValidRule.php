@@ -29,7 +29,7 @@ class ConfigIsValidRule implements Rule
 
                 return json_last_error() === JSON_ERROR_NONE;
             } else {
-                $this->message = __('statamic-tinymce-cloud::rules.config_is_valid_required');
+                $this->message = __('tinymce-cloud::rules.config_is_valid_required');
             }
         }
 
@@ -46,6 +46,6 @@ class ConfigIsValidRule implements Rule
             return $this->message;
         }
 
-        return __('statamic-tinymce-cloud::rules.config_is_valid');
+        return __('tinymce-cloud::rules.config_is_valid');
     }
 }

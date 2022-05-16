@@ -21,32 +21,30 @@ class ServiceProvider extends AddonServiceProvider
         'cp' => __DIR__.'/../routes/cp.php'
     ];
 
-    public function boot()
+    protected $updateScripts = [
+        // v2.0.1
+        \MityDigital\StatamicTinymceCloud\UpdateScripts\v2_0_1\MoveConfigFile::class
+    ];
+
+    public function bootAddon()
     {
-        parent::boot();
-
-        // set up config publishing
-        $this->publishes([
-            __DIR__.'/../config/tinymce-cloud.php' => config_path('statamic/tinymce-cloud.php'),
-        ], 'statamic-tinymce-cloud-config');
-
         // views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'statamic-tinymce-cloud');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tinymce-cloud');
 
         // translations
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-tinymce-cloud');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'tinymce-cloud');
 
         // update nav
         Nav::extend(function ($nav) {
-            $nav->tools(__('statamic-tinymce-cloud::addon.name'))
-                ->route('statamic-tinymce-cloud.defaults.edit')
+            $nav->tools(__('tinymce-cloud::addon.name'))
+                ->route('tinymce-cloud.defaults.edit')
                 ->icon('textarea')
                 ->can('view tinymce cloud configuration');
         });
 
         // register permission
         Permission::register('view tinymce cloud configuration')
-            ->label(__('statamic-tinymce-cloud::permissions.configuration'));
+            ->label(__('tinymce-cloud::permissions.configuration'));
 
         // Register the TinymceCloud Custom Field
         TinymceCloud::register();
