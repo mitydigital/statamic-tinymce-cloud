@@ -21,16 +21,16 @@ class MoveConfigFile extends UpdateScript
 
         // if the config file exists within the 'config/statamic' path, move it just to 'config'
         if (file_exists(config_path('statamic/tinymce-cloud.php'))) {
-            if (file_exists(config_path('tinymce-cloud.php'))) {
+            if (file_exists(config_path('statamic-tinymce-cloud.php'))) {
                 // cannot copy
-                $this->console()->alert('The Tiny Cloud config file could not be moved to `config/tinymce-cloud.php` - it already exists!');
-                $this->console()->alert('You will need to manually make sure your `config/tinymce-cloud.php` file is correctly configured.');
+                $this->console()->alert('The Tiny Cloud config file could not be moved to `config/statamic-tinymce-cloud.php` - it already exists!');
+                $this->console()->alert('You will need to manually make sure your `config/statamic-tinymce-cloud.php` file is correctly configured.');
             } else {
                 // move the config file
-                rename(config_path('statamic/tinymce-cloud.php'), config_path('tinymce-cloud.php'));
+                rename(config_path('statamic/tinymce-cloud.php'), config_path('statamic-tinymce-cloud.php'));
 
                 // output
-                $this->console()->info('Tiny Cloud config file has been moved to `config/tinymce-cloud.php`!');
+                $this->console()->info('Tiny Cloud config file has been moved to `config/statamic-tinymce-cloud.php`!');
             }
         }
 
