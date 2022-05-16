@@ -28,12 +28,6 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        // views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'statamic-tinymce-cloud');
-
-        // translations
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'statamic-tinymce-cloud');
-
         // update nav
         Nav::extend(function ($nav) {
             $nav->tools(__('statamic-tinymce-cloud::addon.name'))
