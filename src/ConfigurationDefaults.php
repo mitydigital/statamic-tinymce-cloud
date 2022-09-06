@@ -117,7 +117,7 @@ class ConfigurationDefaults extends Collection
                                                 'handle' => 'configuration',
                                                 'field'  => [
                                                     'type' => 'code',
-                                                    'mode' => 'javascript',
+                                                    'mode' => 'yaml',
 
                                                     'display'               => __('statamic-tinymce-cloud::defaults.config_code'),
                                                     'instructions'          => __('statamic-tinymce-cloud::defaults.config_code_instruct'),

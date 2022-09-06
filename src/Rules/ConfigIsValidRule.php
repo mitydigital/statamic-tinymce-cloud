@@ -3,6 +3,9 @@
 namespace MityDigital\StatamicTinymceCloud\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
+use Statamic\Yaml\ParseException;
+use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 class ConfigIsValidRule implements Rule
 {
@@ -23,11 +26,19 @@ class ConfigIsValidRule implements Rule
 
             if ($value['code']) {
 
-                $code = $value['code'];
+                // squish the code (remove white spaces, new lines, tabs, etc)
+                $code = Str::squish($value['code']);
 
-                json_decode($code);
+                try {
+                    // try to parse the object
+                    \Statamic\Facades\YAML::parse($code, SymfonyYaml::PARSE_OBJECT_FOR_MAP);
+                } catch (ParseException $e) {
+                    // invalid yaml
+                    return false;
+                }
 
-                return json_last_error() === JSON_ERROR_NONE;
+                // this far, it parsed
+                return true;
             } else {
                 $this->message = __('statamic-tinymce-cloud::rules.config_is_valid_required');
             }

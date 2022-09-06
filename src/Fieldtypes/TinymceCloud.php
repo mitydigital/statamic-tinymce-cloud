@@ -3,7 +3,11 @@
 namespace MityDigital\StatamicTinymceCloud\Fieldtypes;
 
 use MityDigital\StatamicTinymceCloud\ConfigurationDefaults;
+use Statamic\Facades\CP\Toast;
 use Statamic\Fields\Fieldtype;
+use Statamic\Support\Str;
+use Statamic\Yaml\ParseException;
+use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 class TinymceCloud extends Fieldtype
 {
@@ -31,15 +35,23 @@ class TinymceCloud extends Fieldtype
         $config = collect($defaults->get('defaults'))->firstWhere('name', $this->config('config'));
 
         if (!$config) {
-            $config = '{}';
+            $config = [];
         }
 
-        // decode the config
-        $config = json_decode($config['configuration'], true);
+        try {
+            // try to parse the object
+            $config = \Statamic\Facades\YAML::parse(Str::squish($config['configuration']), SymfonyYaml::PARSE_OBJECT_FOR_MAP);
+        } catch (ParseException $e) {
+            // invalid yaml
+            Toast::error(__('statamic-tinymce-cloud::fieldtype.config_not_valid'));
+
+            // reset config to an empty array
+            $config = [];
+        }
 
         return [
-            'init'          => $config,
-            'key'           => config('statamic-tinymce-cloud.api_key', ''),
+            'init' => $config,
+            'key' => config('statamic-tinymce-cloud.api_key', ''),
             'cloud_channel' => $defaults->get('cloud_channel', 6)
         ];
     }
@@ -60,16 +72,16 @@ class TinymceCloud extends Fieldtype
 
         return [
             'config' => [
-                'display'  => __('statamic-tinymce-cloud::fieldtype.config'),
-                'type'     => 'select',
-                'default'  => $default,
-                'options'  => $configs
+                'display' => __('statamic-tinymce-cloud::fieldtype.config'),
+                'type' => 'select',
+                'default' => $default,
+                'options' => $configs
                     ->mapWithKeys(fn(array $config) => [
                         $config['name'] => $config['name']
                     ])
                     ->sort()
                     ->toArray(),
-                'width'    => 33,
+                'width' => 33,
                 'validate' => ['required']
             ],
         ];
