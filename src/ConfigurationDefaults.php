@@ -140,11 +140,9 @@ class ConfigurationDefaults extends Collection
         // create the config file
         $config = 'const tinymceCloudConfig = {};';
 
-
         foreach ($this->items['defaults'] as $item) {
             $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration'].';';
         }
-        ray($this);
 
         // save the config file
         File::put(public_path('vendor/statamic-tinymce-cloud/config.js'), $config);
