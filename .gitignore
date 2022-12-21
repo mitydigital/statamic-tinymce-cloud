@@ -9,3 +9,4 @@ package-lock.json
 mix-manifest.json
 composer.lock
 .php-cs-fixer.cache
+resources/dist/config.js

@@ -1,8 +1,8 @@
 <template>
-    <editor :value="value" @input="update"
-            :api-key="apiKey"
+    <editor :api-key="apiKey" :cloud-channel="cloudChannel"
             :init="init"
-            :cloud-channel="cloudChannel"
+            :value="value"
+            @input="update"
     ></editor>
 </template>
 
@@ -25,7 +25,16 @@ export default {
             return 6;
         },
         init() {
-            return this.meta.init;
+            if (typeof tinymceCloudConfig === 'undefined') {
+                alert('The Tiny Cloud config file could not be found. Make sure you have at least one configuration saved.');
+                return {};
+            }
+            if (typeof tinymceCloudConfig[this.meta.init] === 'undefined') {
+                alert('Your requested Tiny Cloud config could not be found. Please confirm your Blueprint and Tiny Cloud configurations.')
+                return {};
+            }
+
+            return tinymceCloudConfig[this.meta.init];
         }
     }
 };

@@ -3,7 +3,6 @@
 namespace MityDigital\StatamicTinymceCloud;
 
 use Illuminate\Support\Collection;
-use MityDigital\StatamicTinymceCloud\Rules\ConfigIsValidRule;
 use MityDigital\StatamicTinymceCloud\Rules\ConfigNameUniqueRule;
 use Statamic\Facades\Blueprint;
 use Statamic\Facades\File;
@@ -23,26 +22,6 @@ class ConfigurationDefaults extends Collection
         }
 
         $this->items = $items ?? $this->getDefaults();
-    }
-
-    /**
-     * Load configuration defaults collection.
-     *
-     * @param  array|Collection|null  $items
-     *
-     * @return static
-     */
-    public static function load($items = null)
-    {
-        return new static($items);
-    }
-
-    /**
-     * Save configuration defaults collection to yaml.
-     */
-    public function save()
-    {
-        File::put($this->path(), YAML::dump($this->items));
     }
 
     /**
@@ -68,6 +47,18 @@ class ConfigurationDefaults extends Collection
     }
 
     /**
+     * Load configuration defaults collection.
+     *
+     * @param  array|Collection|null  $items
+     *
+     * @return static
+     */
+    public static function load($items = null)
+    {
+        return new static($items);
+    }
+
+    /**
      * Get configuration defaults blueprint.
      *
      * @return \Statamic\Fields\Blueprint
@@ -80,11 +71,11 @@ class ConfigurationDefaults extends Collection
                     'fields' => [
                         [
                             'handle' => 'cloud_channel',
-                            'field'  => [
-                                'display'      => __('statamic-tinymce-cloud::defaults.cloud_channel'),
+                            'field' => [
+                                'display' => __('statamic-tinymce-cloud::defaults.cloud_channel'),
                                 'instructions' => __('statamic-tinymce-cloud::defaults.cloud_channel_instruct'),
-                                'type'         => 'select',
-                                'default'      => '6',
+                                'type' => 'select',
+                                'default' => '6',
 
                                 'options' => [
                                     '5' => 'TinyMCE 5',
@@ -96,48 +87,69 @@ class ConfigurationDefaults extends Collection
                         ],
                         [
                             'handle' => 'defaults',
-                            'field'  => [
-                                'display'      => __('statamic-tinymce-cloud::defaults.init'),
+                            'field' => [
+                                'display' => __('statamic-tinymce-cloud::defaults.init'),
                                 'instructions' => __('statamic-tinymce-cloud::defaults.init_instruct'),
-                                'type'         => 'replicator',
-                                'sets'         => [
+                                'type' => 'replicator',
+                                'sets' => [
                                     'configuration' => [
                                         'display' => __('statamic-tinymce-cloud::defaults.config_defaults'),
-                                        'fields'  => [
+                                        'fields' => [
                                             [
                                                 'handle' => 'name',
-                                                'field'  => [
-                                                    'display'      => __('statamic-tinymce-cloud::defaults.config_name'),
+                                                'field' => [
+                                                    'display' => __('statamic-tinymce-cloud::defaults.config_name'),
                                                     'instructions' => __('statamic-tinymce-cloud::defaults.config_name_instruct'),
-                                                    'type'         => 'text',
-                                                    'validate'     => ['required']
+                                                    'type' => 'text',
+                                                    'validate' => ['required']
                                                 ],
                                             ],
                                             [
                                                 'handle' => 'configuration',
-                                                'field'  => [
+                                                'field' => [
                                                     'type' => 'code',
                                                     'mode' => 'yaml',
 
-                                                    'display'               => __('statamic-tinymce-cloud::defaults.config_code'),
-                                                    'instructions'          => __('statamic-tinymce-cloud::defaults.config_code_instruct'),
+                                                    'display' => __('statamic-tinymce-cloud::defaults.config_code'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_code_instruct'),
                                                     'instructions_position' => 'below',
 
                                                     'validate' => [
-                                                        'required',
-                                                        new ConfigIsValidRule()
+                                                        'required'
                                                     ]
                                                 ]
                                             ]
                                         ]
                                     ]
                                 ],
-                                'validate'     => ['required', new ConfigNameUniqueRule()]
+                                'validate' => ['required', new ConfigNameUniqueRule()]
                             ],
                         ]
                     ],
                 ]
             ],
         ]);
+    }
+
+    /**
+     * Save configuration defaults collection to yaml.
+     */
+    public function save()
+    {
+
+        // create the config file
+        $config = 'const tinymceCloudConfig = {};';
+
+
+        foreach ($this->items['defaults'] as $item) {
+            $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration'].';';
+        }
+        ray($this);
+
+        // save the config file
+        File::put(public_path('vendor/statamic-tinymce-cloud/config.js'), $config);
+
+        // save the yaml config
+        File::put($this->path(), YAML::dump($this->items));
     }
 }
