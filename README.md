@@ -1,4 +1,4 @@
-# TinyMCE Cloud Fieldtype for Statamic 3
+# TinyMCE Cloud Fieldtype for Statamic 3.3+ and Statamic 4
 
 <!-- statamic:hide -->
 
@@ -11,7 +11,7 @@
 
 > A TinyMCE Cloud fieldtype for Statamic.
 
-This is a TinyMCE Cloud Fieldtype for Statamic 3 utilising the cloud-hosted version of TinyMCE.
+This is a TinyMCE Cloud Fieldtype for Statamic 3.3+/4.0 utilising the cloud-hosted version of TinyMCE.
 
 This requires a free API key from [tiny.cloud](https://www.tiny.cloud), and simplifies your build steps as the cloud
 version will always run the latest version from Tiny, and doesn't need to be included in your app's bundle.

@@ -1,45 +1,45 @@
 {
-    "name": "mitydigital/statamic-tinymce-cloud",
-    "description": "A Statamic 3 fieldtype for TinyMCE using Tiny Cloud",
-    "type": "statamic-addon",
-    "keywords": [
-        "statamic",
-        "tinymce",
-        "tinymce cloud",
-        "tiny cloud"
-    ],
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "MityDigital\\StatamicTinymceCloud\\": "src"
-        }
-    },
-    "authors": [
-        {
-            "name": "Marty Friedel"
-        }
-    ],
-    "support": {
-        "email": "dev@mity.com.au"
-    },
-    "require": {
-		"php": "^8.0",
-        "statamic/cms": "^3.3"
-    },
-    "extra": {
-        "statamic": {
-            "name": "TinyMCE Cloud",
-            "description": "A Statamic 3 fieldtype for TinyMCE using Tiny Cloud"
-        },
-        "laravel": {
-            "providers": [
-                "MityDigital\\StatamicTinymceCloud\\ServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "pixelfear/composer-dist-plugin": true
-        }
+  "name": "mitydigital/statamic-tinymce-cloud",
+  "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3 and Statamic 4",
+  "type": "statamic-addon",
+  "keywords": [
+    "statamic",
+    "tinymce",
+    "tinymce cloud",
+    "tiny cloud"
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "MityDigital\\StatamicTinymceCloud\\": "src"
     }
+  },
+  "authors": [
+    {
+      "name": "Marty Friedel"
+    }
+  ],
+  "support": {
+    "email": "dev@mity.com.au"
+  },
+  "require": {
+    "php": "^8.0",
+    "statamic/cms": "^3.3|^4.0"
+  },
+  "extra": {
+    "statamic": {
+      "name": "TinyMCE Cloud",
+      "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3 and Statamic 4"
+    },
+    "laravel": {
+      "providers": [
+        "MityDigital\\StatamicTinymceCloud\\ServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
+    }
+  }
 }
