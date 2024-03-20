@@ -75,11 +75,12 @@ class ConfigurationDefaults extends Collection
                                 'display' => __('statamic-tinymce-cloud::defaults.cloud_channel'),
                                 'instructions' => __('statamic-tinymce-cloud::defaults.cloud_channel_instruct'),
                                 'type' => 'select',
-                                'default' => '6',
+                                'default' => '7',
 
                                 'options' => [
                                     '5' => 'TinyMCE 5',
-                                    '6' => 'TinyMCE 6'
+                                    '6' => 'TinyMCE 6',
+                                    '7' => 'TinyMCE 7'
                                 ],
 
                                 'validate' => ['required']
