@@ -17,7 +17,7 @@ This requires a free API key from [tiny.cloud](https://www.tiny.cloud), and simp
 version will always run the latest version from Tiny, and doesn't need to be included in your app's bundle.
 
 In the configuration you are able to choose which TinyMCE version you want to use - you now have the choice of 
-TinyMCE 6 or TinyMCE 5.
+TinyMCE version 5, 6 or 7.
 
 ![TinyMCE 6 as a fieldtype in Statamic 3](./docs/tinymce-in-statamic.png)
 
