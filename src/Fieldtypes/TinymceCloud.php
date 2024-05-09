@@ -34,7 +34,7 @@ class TinymceCloud extends Fieldtype
         return [
             'init' => $this->config('config'),
             'key' => config('statamic-tinymce-cloud.api_key', ''),
-            'cloud_channel' => $defaults->get('cloud_channel', 6)
+            'cloud_channel' => $defaults->get('cloud_channel', 7)
         ];
     }
 
@@ -43,7 +43,7 @@ class TinymceCloud extends Fieldtype
         // prepare defaults
         $defaults = ConfigurationDefaults::load();
 
-        // get the cofnigs
+        // get the configs
         $configs = collect($defaults->get('defaults', []));
 
         // get the default

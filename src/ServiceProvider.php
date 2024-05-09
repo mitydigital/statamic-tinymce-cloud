@@ -26,6 +26,13 @@ class ServiceProvider extends AddonServiceProvider
         \MityDigital\StatamicTinymceCloud\UpdateScripts\v2_0_1\MoveConfigFile::class
     ];
 
+    protected $vite = [
+        'input' => [
+            'resources/js/tinymce-cloud.js',
+        ],
+        'publicDirectory' => 'resources/dist',
+    ];
+
     public function bootAddon()
     {
         // update nav

@@ -1,5 +1,6 @@
 <template>
-    <editor :api-key="apiKey" :cloud-channel="cloudChannel"
+    <editor :api-key="apiKey"
+            :cloud-channel="cloudChannel"
             :init="init"
             :value="value"
             @input="update"
@@ -25,6 +26,7 @@ export default {
             return 6;
         },
         init() {
+            console.log(this.meta);
             if (typeof tinymceCloudConfig === 'undefined') {
                 alert('The Tiny Cloud config file could not be found. Make sure you have at least one configuration saved.');
                 return {};

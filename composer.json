@@ -1,6 +1,6 @@
 {
   "name": "mitydigital/statamic-tinymce-cloud",
-  "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3 and Statamic 4",
+  "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3, 4 and 5",
   "type": "statamic-addon",
   "keywords": [
     "statamic",
@@ -24,12 +24,12 @@
   },
   "require": {
     "php": "^8.0",
-    "statamic/cms": "^3.3|^4.0"
+    "statamic/cms": "^3.3|^4.0|^5.0"
   },
   "extra": {
     "statamic": {
       "name": "TinyMCE Cloud",
-      "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3 and Statamic 4"
+      "description": "A Statamic fieldtype for TinyMCE using Tiny Cloud for Statamic 3.3, 4 and 5."
     },
     "laravel": {
       "providers": [
