@@ -6,8 +6,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/js/addon.js',
-                'resources/css/addon.css'
+                'resources/js/tinymce-cloud.js',
             ],
             publicDirectory: 'resources/dist',
         }),

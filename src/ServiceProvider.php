@@ -13,10 +13,6 @@ class ServiceProvider extends AddonServiceProvider
         TinymceCloud::class
     ];
 
-    protected $scripts = [
-        __DIR__.'/../resources/dist/js/tinymce-cloud.js'
-    ];
-
     protected $routes = [
         'cp' => __DIR__.'/../routes/cp.php'
     ];
