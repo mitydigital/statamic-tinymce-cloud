@@ -40,6 +40,7 @@ help you. So be awesome - it'll feel fantastic.
 ## Credits
 
 - [Marty Friedel](https://github.com/martyf)
+- [Igor](https://github.com/IVoyt) for a bug fix
 
 Makes use of:
 - [TinyMCE Vue component](https://github.com/tinymce/tinymce-vue)
