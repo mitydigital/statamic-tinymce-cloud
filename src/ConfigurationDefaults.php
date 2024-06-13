@@ -142,7 +142,7 @@ class ConfigurationDefaults extends Collection
         $config = 'const tinymceCloudConfig = {};';
 
         foreach ($this->items['defaults'] as $item) {
-            $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration'].';';
+            $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration']['code'].';';
         }
 
         // save the config file
