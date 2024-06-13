@@ -148,7 +148,6 @@ class ConfigurationDefaults extends Collection
                 // pre 5.7, it would be a string
                 $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration'].';';
             }
-
         }
 
         // save the config file
