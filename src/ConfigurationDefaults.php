@@ -17,7 +17,7 @@ class ConfigurationDefaults extends Collection
      */
     public function __construct($items = null)
     {
-        if (!is_null($items)) {
+        if (! is_null($items)) {
             $items = collect($items)->all();
         }
 
@@ -50,7 +50,6 @@ class ConfigurationDefaults extends Collection
      * Load configuration defaults collection.
      *
      * @param  array|Collection|null  $items
-     *
      * @return static
      */
     public static function load($items = null)
@@ -80,10 +79,10 @@ class ConfigurationDefaults extends Collection
                                 'options' => [
                                     '5' => 'TinyMCE 5',
                                     '6' => 'TinyMCE 6',
-                                    '7' => 'TinyMCE 7'
+                                    '7' => 'TinyMCE 7',
                                 ],
 
-                                'validate' => ['required']
+                                'validate' => ['required'],
                             ],
                         ],
                         [
@@ -102,32 +101,32 @@ class ConfigurationDefaults extends Collection
                                                     'display' => __('statamic-tinymce-cloud::defaults.config_name'),
                                                     'instructions' => __('statamic-tinymce-cloud::defaults.config_name_instruct'),
                                                     'type' => 'text',
-                                                    'validate' => ['required']
+                                                    'validate' => ['required'],
                                                 ],
                                             ],
                                             [
                                                 'handle' => 'configuration',
                                                 'field' => [
                                                     'type' => 'code',
-                                                    'mode' => 'yaml',
+                                                    'mode' => 'javascript',
 
                                                     'display' => __('statamic-tinymce-cloud::defaults.config_code'),
                                                     'instructions' => __('statamic-tinymce-cloud::defaults.config_code_instruct'),
                                                     'instructions_position' => 'below',
 
                                                     'validate' => [
-                                                        'required'
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
+                                                        'required',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
                                 ],
-                                'validate' => ['required', new ConfigNameUniqueRule()]
+                                'validate' => ['required', new ConfigNameUniqueRule()],
                             ],
-                        ]
+                        ],
                     ],
-                ]
+                ],
             ],
         ]);
     }
@@ -142,7 +141,14 @@ class ConfigurationDefaults extends Collection
         $config = 'const tinymceCloudConfig = {};';
 
         foreach ($this->items['defaults'] as $item) {
-            $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration']['code'].';';
+            if (is_array($item['configuration']) && array_key_exists('code', $item['configuration'])) {
+                // 5.7 and later, it is an array
+                $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration']['code'].';';
+            } else {
+                // pre 5.7, it would be a string
+                $config .= "\r\n".'tinymceCloudConfig["'.addslashes($item['name']).'"] = '.$item['configuration'].';';
+            }
+
         }
 
         // save the config file
