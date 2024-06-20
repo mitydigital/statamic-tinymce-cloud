@@ -58,10 +58,10 @@ class TinymceCloud extends Fieldtype
                 'type' => 'select',
                 'default' => $default,
                 'options' => $configs
+                    ->sortBy(fn(array $config) => strtolower($config['name']))
                     ->mapWithKeys(fn(array $config) => [
                         $config['name'] => $config['name']
                     ])
-                    ->sort()
                     ->toArray(),
                 'width' => 33,
                 'validate' => ['required']
