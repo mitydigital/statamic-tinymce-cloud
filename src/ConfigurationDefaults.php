@@ -72,7 +72,7 @@ class ConfigurationDefaults extends Collection
                             'handle' => 'cloud_channel',
                             'field' => [
                                 'display' => __('statamic-tinymce-cloud::defaults.cloud_channel'),
-                                'instructions' => __('statamic-tinymce-cloud::defaults.cloud_channel_instruct'),
+                                'instructions' => __('statamic-tinymce-cloud::defaults.cloud_channel_instructions'),
                                 'type' => 'select',
                                 'default' => '7',
 
@@ -89,7 +89,7 @@ class ConfigurationDefaults extends Collection
                             'handle' => 'defaults',
                             'field' => [
                                 'display' => __('statamic-tinymce-cloud::defaults.init'),
-                                'instructions' => __('statamic-tinymce-cloud::defaults.init_instruct'),
+                                'instructions' => __('statamic-tinymce-cloud::defaults.init_instructions'),
                                 'type' => 'replicator',
                                 'sets' => [
                                     'configuration' => [
@@ -99,9 +99,34 @@ class ConfigurationDefaults extends Collection
                                                 'handle' => 'name',
                                                 'field' => [
                                                     'display' => __('statamic-tinymce-cloud::defaults.config_name'),
-                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_name_instruct'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_name_instructions'),
                                                     'type' => 'text',
                                                     'validate' => ['required'],
+                                                ],
+                                            ],
+                                            [
+                                                'handle' => 'init_mode',
+                                                'field' => [
+                                                    'display' => __('statamic-tinymce-cloud::defaults.init_mode'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.init_mode_instructions'),
+                                                    'type' => 'select',
+                                                    'validate' => ['required'],
+                                                    'options' => [
+                                                        'defer' => __('statamic-tinymce-cloud::defaults.init_mode_defer'),
+                                                        'immediate' => __('statamic-tinymce-cloud::defaults.init_mode_immediate'),
+                                                    ],
+                                                    'default' => 'immediate'
+                                                ],
+                                            ],
+                                            [
+                                                'handle' => 'content_css',
+                                                'field' => [
+                                                    'display' => __('statamic-tinymce-cloud::defaults.content_css'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.content_css_instructions'),
+                                                    'type' => 'text',
+                                                    'if' => [
+                                                        'init_mode' => 'equals defer'
+                                                    ]
                                                 ],
                                             ],
                                             [
@@ -111,7 +136,7 @@ class ConfigurationDefaults extends Collection
                                                     'mode' => 'javascript',
 
                                                     'display' => __('statamic-tinymce-cloud::defaults.config_code'),
-                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_code_instruct'),
+                                                    'instructions' => __('statamic-tinymce-cloud::defaults.config_code_instructions'),
                                                     'instructions_position' => 'below',
 
                                                     'validate' => [
