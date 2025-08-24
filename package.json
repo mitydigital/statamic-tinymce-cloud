@@ -1,15 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
     "build": "vite build"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue2": "^2.2.0",
-    "laravel-vite-plugin": "^0.7.2",
-    "vite": "^4.0.0"
+    "@statamic/cms": "file:./vendor/statamic/cms/resources/js/package",
+    "laravel-vite-plugin": "^1.2.0",
+    "vite": "^6.3.4"
   },
   "dependencies": {
-    "@tinymce/tinymce-vue": "^3.2.6"
+    "@tinymce/tinymce-vue": "^6.2"
   }
 }

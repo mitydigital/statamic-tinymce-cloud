@@ -39,9 +39,10 @@
 
 <script>
 import editor from '@tinymce/tinymce-vue';
+import { FieldtypeMixin } from '@statamic/cms';
 
 export default {
-    mixins: [Fieldtype],
+    mixins: [FieldtypeMixin],
     components: {
         editor: editor
     },

@@ -3,7 +3,7 @@
 namespace MityDigital\StatamicTinymceCloud\Fieldtypes;
 
 use Illuminate\Support\Arr;
-use MityDigital\StatamicTinymceCloud\ConfigurationDefaults;
+use Statamic\Facades\Addon;
 use Statamic\Fields\Fieldtype;
 use Statamic\Statamic;
 
@@ -26,8 +26,7 @@ class TinymceCloud extends Fieldtype
      */
     public function preload(): array
     {
-        // prepare defaults
-        $defaults = ConfigurationDefaults::load();
+        $addon = Addon::get('mitydigital/statamic-tinymce-cloud');
 
         // add the config file
         Statamic::externalScript('/vendor/statamic-tinymce-cloud/config.js');
@@ -36,7 +35,7 @@ class TinymceCloud extends Fieldtype
         $init_mode = $this->config('init_mode', 'immediate');
         if ($init_mode === 'inherit') {
             // get from the default
-            foreach ($defaults->get('defaults') as $default) {
+            foreach ($addon->settings()->get('defaults', []) as $default) {
                 if ($default['name'] === $this->config('config'))
                 {
                     $init_mode = Arr::get($default, 'init_mode', 'immediate');
@@ -48,7 +47,7 @@ class TinymceCloud extends Fieldtype
         // if init is deferred, get the content css
         if ($init_mode === 'defer') {
             // get from the default
-            foreach ($defaults->get('defaults') as $default) {
+            foreach ($addon->settings()->get('defaults', []) as $default) {
                 if ($default['name'] === $this->config('config'))
                 {
                     if ($content_css = Arr::get($default, 'content_css', null)) {
@@ -63,17 +62,16 @@ class TinymceCloud extends Fieldtype
             'init' => $this->config('config'),
             'init_mode' => $init_mode,
             'key' => config('statamic-tinymce-cloud.api_key', ''),
-            'cloud_channel' => $defaults->get('cloud_channel', 7)
+            'cloud_channel' => $addon->settings()->get('cloud_channel', 7)
         ];
     }
 
     protected function configFieldItems(): array
     {
-        // prepare defaults
-        $defaults = ConfigurationDefaults::load();
+        $addon = Addon::get('mitydigital/statamic-tinymce-cloud');
 
         // get the configs
-        $configs = collect($defaults->get('defaults', []));
+        $configs = collect($addon->settings()->get('defaults', []));
 
         // get the default
         $default = null;

@@ -4,7 +4,9 @@ namespace MityDigital\StatamicTinymceCloud;
 
 use MityDigital\StatamicTinymceCloud\Fieldtypes\TinymceCloud;
 use Statamic\Facades\CP\Nav;
+use Statamic\Facades\File;
 use Statamic\Facades\Permission;
+use Statamic\Facades\YAML;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
@@ -13,13 +15,9 @@ class ServiceProvider extends AddonServiceProvider
         TinymceCloud::class
     ];
 
-    protected $routes = [
-        'cp' => __DIR__.'/../routes/cp.php'
-    ];
-
     protected $updateScripts = [
-        // v2.0.1
-        \MityDigital\StatamicTinymceCloud\UpdateScripts\v2_0_1\MoveConfigFile::class
+        // v3.0.0
+        \MityDigital\StatamicTinymceCloud\UpdateScripts\v3_0_0\CreateSettings::class
     ];
 
     protected $vite = [
@@ -31,18 +29,6 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        // update nav
-        Nav::extend(function ($nav) {
-            $nav->tools(__('statamic-tinymce-cloud::addon.name'))
-                ->route('statamic-tinymce-cloud.defaults.edit')
-                ->icon('textarea')
-                ->can('view tinymce cloud configuration');
-        });
-
-        // register permission
-        Permission::register('view tinymce cloud configuration')
-            ->label(__('statamic-tinymce-cloud::permissions.configuration'));
-
         // Register the TinymceCloud Custom Field
         TinymceCloud::register();
     }
