@@ -16,8 +16,8 @@ class ServiceProvider extends AddonServiceProvider
     ];
 
     protected $updateScripts = [
-        // v3.0.0
-        \MityDigital\StatamicTinymceCloud\UpdateScripts\v3_0_0\CreateSettings::class
+        // v4.0.0
+        \MityDigital\StatamicTinymceCloud\UpdateScripts\v4_0_0\CreateSettings::class
     ];
 
     protected $vite = [

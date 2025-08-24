@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MityDigital\StatamicTinymceCloud\UpdateScripts\v3_0_0;
+namespace MityDigital\StatamicTinymceCloud\UpdateScripts\v4_0_0;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
@@ -11,7 +11,7 @@ class CreateSettings extends UpdateScript
 {
     public function shouldUpdate($newVersion, $oldVersion)
     {
-        return $this->isUpdatingTo('3.0.0');
+        return $this->isUpdatingTo('4.0.0');
     }
     public function update()
     {
