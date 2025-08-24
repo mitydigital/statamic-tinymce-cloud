@@ -1,9 +1,8 @@
-# TinyMCE Cloud Fieldtype for Statamic 4 and 5
+# TinyMCE Cloud Fieldtype for Statamic
 
 <!-- statamic:hide -->
 
-![Statamic 4](https://img.shields.io/badge/Statamic-4-FF269E?style=for-the-badge&link=https://statamic.com)
-![Statamic 5](https://img.shields.io/badge/Statamic-5-FF269E?style=for-the-badge&link=https://statamic.com)
+![Statamic 6](https://img.shields.io/badge/Statamic-6-FF269E?style=for-the-badge&link=https://statamic.com)
 [![Statamic TinyMCE Cloud on Packagist](https://img.shields.io/packagist/v/mitydigital/statamic-tinymce-cloud?style=for-the-badge)](https://packagist.org/packages/mitydigital/statamic-tinymce-cloud/stats)
 
 ---
@@ -12,7 +11,7 @@
 
 > A TinyMCE Cloud fieldtype for Statamic.
 
-This is a TinyMCE Cloud Fieldtype for Statamic 4 and 5 utilising the cloud-hosted version of TinyMCE.
+This is a TinyMCE Cloud Fieldtype for Statamic utilising the cloud-hosted version of TinyMCE.
 
 This requires a free API key from [tiny.cloud](https://www.tiny.cloud), and simplifies your build steps as the cloud
 version will always run the latest version from Tiny, and doesn't need to be included in your app's bundle.
