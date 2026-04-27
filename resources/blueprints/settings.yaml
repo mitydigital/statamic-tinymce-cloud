@@ -37,6 +37,7 @@ sections:
                                         This will become the default for this configuration, but can be overridden at the fieldtype
                                         level.
           type: replicator
+          full_width_setting: true
           sets:
             configuration:
               display: 'Default Configuration Option'
@@ -81,6 +82,7 @@ sections:
                   field:
                     type: code
                     mode: javascript
+                    full_width_setting: true
                     display: Configuration
                     instructions: "Don't forget that you need to ensure your configuration is valid."
                     instructions_position: below
