@@ -9,8 +9,8 @@
                 :api-key="apiKey"
                 :cloud-channel="cloudChannel"
                 :init="init"
-                :value="value"
-                @input="update"
+                :model-value="value"
+                @update:model-value="update"
         ></editor>
         <div v-else
              class="bg-gray-100 border border-gray-200 rounded overflow-hidden"
