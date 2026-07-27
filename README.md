@@ -9,7 +9,18 @@
 
 <!-- /statamic:hide -->
 
-> A TinyMCE Cloud fieldtype for Statamic.
+> ⚠️ Maintenance Status - July 27, 2026
+>
+> This package is no longer actively developed, and will not be supported after Statamic 6. 
+>
+> I no longer use TinyMCE in any of my projects, and Statamic offers much better core functionality for content
+> authoring, management and flexibility within the Statamic platform.
+>
+> **For new users to Statamic**, take some time to understand how Bard works: while it may have a learning curve for you
+> now, in the long term, you'll be in a much happier place. You can still make your own extensions using Vue, and
+> Statamic have made it extensible within the CP.
+>
+> If someone would like to adopt the project, feel free to get in touch.
 
 This is a TinyMCE Cloud Fieldtype for Statamic utilising the cloud-hosted version of TinyMCE.
 
